@@ -1,0 +1,5 @@
+<library path="lib/libsystemd_ros">
+  <class type="log4cxx::SystemJournalAppender" base_class_type="log4cxx::AppenderSkeleton">
+    <description>Appender plugin for System Journal</description>
+  </class>
+</library>
