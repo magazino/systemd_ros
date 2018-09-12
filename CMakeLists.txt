@@ -30,7 +30,11 @@ target_link_libraries(
 )
 
 install(
-    FILES etc/systemd_log4cxx.conf etc/systemd_logging.conf
+    FILES
+    etc/systemd_log4cxx_with_rosout.conf
+    etc/systemd_log4cxx_without_rosout.conf
+    etc/systemd_logging_with_rosout.conf
+    etc/systemd_logging_without_rosout.conf
     DESTINATION ${CATKIN_PACKAGE_ETC_DESTINATION}
 )
 install(
