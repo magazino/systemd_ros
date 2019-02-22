@@ -8,18 +8,8 @@
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-
-  <build_depend>libsystemd-dev</build_depend>
-  <depend>roscpp</depend>
-  <depend>pluginlib</depend>
-  <depend>rosconsole</depend>
-  <depend>log4cxx</depend>
-
-  <exec_depend>libsystemd</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>python-systemd</exec_depend>
 
-  <export>
-    <rosconsole plugin="${prefix}/log_appenders.xml" />
-  </export>
+  <export></export>
 </package>
