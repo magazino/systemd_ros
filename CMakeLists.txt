@@ -17,5 +17,3 @@ install(
     PROGRAMS scripts/systemd_env.sh
     DESTINATION ${CMAKE_INSTALL_PREFIX}
 )
-
-)
