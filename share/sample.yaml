@@ -1,0 +1,4 @@
+/talkers/talker1:
+  Service:
+    WatchdogSec: 1
+    Nice: 9

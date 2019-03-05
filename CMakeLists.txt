@@ -8,12 +8,29 @@ catkin_package()
 
 install(
     FILES
+     etc/systemd_log4cxx_no_output.conf
+     etc/systemd_logging_stdout.conf
      etc/systemd_logging_with_rosout.conf
      etc/systemd_logging_without_rosout.conf
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
 install(
-    PROGRAMS scripts/systemd_env.sh
-    DESTINATION ${CMAKE_INSTALL_PREFIX}
+    PROGRAMS
+     scripts/remote-env.sh
+    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+catkin_install_python(
+    PROGRAMS
+     scripts/generate-services
+     scripts/param-manager
+    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+catkin_install_python(
+    PROGRAMS
+     scripts/systemd-roscore
+    DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+)
+

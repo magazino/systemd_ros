@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <group ns="talkers">
+        <node name="talker1" pkg="rospy_tutorials" type="talker" output="screen" respawn="true" respawn_delay="1" />
+        <node name="talker2" pkg="rospy_tutorials" type="talker" output="screen" respawn="true" respawn_delay="1" />
+    </group>
+    <group ns="listeners">
+        <env name="FOO" value="bar" />
+        <remap to="/talkers/chatter" from="chatter" />
+        <node name="listener1" pkg="roscpp_tutorials" type="listener" output="screen" respawn="true" respawn_delay="1">
+            <param name="foo" value="bar" />
+        </node>
+        <node name="listener2" pkg="roscpp_tutorials" type="listener" output="screen" respawn="true" respawn_delay="1" />
+    </group>
+</launch>

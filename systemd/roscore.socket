@@ -1,0 +1,9 @@
+[Unit]
+Description=roscore Socket
+PartOf=roscore.service
+
+[Socket]
+ListenStream=0.0.0.0:11311
+
+[Install]
+WantedBy=sockets.target
