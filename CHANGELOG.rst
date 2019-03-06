@@ -2,6 +2,10 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.1 (2019-03-06)
+------------------
+* skip param loading during generation
+
 1.1.0 (2019-03-05)
 ------------------
 * Added service generator
