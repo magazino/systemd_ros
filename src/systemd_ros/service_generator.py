@@ -5,13 +5,25 @@ import shlex
 import yaml
 
 import rospkg
-from roslaunch import ROSLaunchConfig, XmlLoader
+from roslaunch.config import ROSLaunchConfig
+from roslaunch.xmlloader import XmlLoader, ifunless
 from systemd_ros.config_parser import SystemdConfigParser
 
 PARAM_MANAGER = ('systemd_ros', 'param-manager')
 ROS_ROOT = os.path.dirname(rospkg.get_ros_paths()[-1])
 ENV_SH = os.path.join(ROS_ROOT, 'env.sh')
 REMOTE_ENV_LOADER = ('systemd_ros', 'remote-env.sh')
+
+
+class FastXmlLoader(XmlLoader):
+
+    @ifunless
+    def _param_tag(self, *args, **kwargs):
+        pass
+
+    @ifunless
+    def _rosparam_tag(self, *arsg, **kwargs):
+        pass
 
 
 class ServiceGenerator(object):
@@ -238,7 +250,7 @@ def main():
     getattr(args, 'launch-file').close()
 
     config = ROSLaunchConfig()
-    XmlLoader().load(launch_file_name, config, verbose=False)
+    FastXmlLoader().load(launch_file_name, config, verbose=False)
 
     extra_config = {}
     if args.extra_config:
