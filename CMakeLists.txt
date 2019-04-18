@@ -1,10 +1,18 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(systemd_ros)
 
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED nodelet)
 
 catkin_python_setup()
-catkin_package()
+catkin_package(CATKIN_DEPENDS nodelet)
+
+include_directories(${catkin_INCLUDE_DIRS})
+add_executable(nodelet_manager nodes/nodelet_manager.cpp)
+target_link_libraries(nodelet_manager ${catkin_LIBRARIES})
+
+install(TARGETS nodelet_manager
+        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 install(
     FILES

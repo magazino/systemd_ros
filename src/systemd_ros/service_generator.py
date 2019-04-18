@@ -1,4 +1,6 @@
 import argparse
+import collections
+import copy
 import os
 import platform
 import shlex
@@ -134,9 +136,9 @@ class ServiceGenerator(object):
                 ))
 
         data['Service']['ExecStart'] = (
-            '{env_sh} rosrun{prefix} {package} {type} {args} '
+            '{env_sh} rosrun{prefix} {package} {type} '
             '__master:={master} __ns:={namespace} __name:={name} '
-            '{remappings}'
+            '{remappings} {args}'
             ''.format(
                 env_sh=env_sh,
                 prefix=(' --prefix={}'.format(node.launch_prefix)
@@ -202,6 +204,21 @@ class ServiceGenerator(object):
             }
         })
 
+    def generate_manager_and_nodelets(self, manager, nodelets):
+        node = copy.deepcopy(manager)
+        node.package = 'systemd_ros'
+        node.type = 'nodelet_manager'
+        args = []
+        for nodelet in nodelets:
+            nodelet_args = shlex.split(nodelet.args)
+            args.append(nodelet_args[1])
+            args.append('{}{}'.format(nodelet.namespace, nodelet.name))
+            for kv in nodelet.remap_args:
+                args.append('{}:={}'.format(*kv))
+        node.args = ' '.join(args)
+
+        return self.generate_node_config(node)
+
     def generate_services(self, output_dir):
 
         if not os.path.exists(output_dir):
@@ -219,8 +236,37 @@ class ServiceGenerator(object):
             self.main_service_name: self.generate_main_node_config()
         }
 
+        nodelets = collections.defaultdict(list)
+        managers = {}
+        standard_nodes = []
+
         for node in self.launch_config.nodes:
+            node_args = shlex.split(node.args)
+            if node.package == node.type == 'nodelet' and node_args:
+                if node_args[0] == 'load':
+                    nodelets[node_args[2]].append(node)
+                elif node_args[0] == 'manager':
+                    managers[node.name] = node
+                else:
+                    standard_nodes.append(node)
+            else:
+                standard_nodes.append(node)
+
+        for node in standard_nodes:
             service_configs.setdefault(*self.generate_node_config(node))
+
+        for manager, nodelets_ in nodelets.items():
+            if manager in managers:
+                service_configs.setdefault(*self.generate_manager_and_nodelets(
+                    managers[manager], nodelets_))
+            else:
+                # nodelet which loads into an unknown manager
+                service_configs.setdefault(*self.generate_node_config(node))
+
+        for manager in set(managers.keys()) - set(nodelets.keys()):
+            # managers without nodelets
+            service_configs.setdefault(*self.generate_node_config(
+                managers[manager]))
 
         for service_name, conf in service_configs.items():
             service_path = os.path.join(output_dir, service_name)

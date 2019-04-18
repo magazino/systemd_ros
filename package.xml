@@ -17,6 +17,8 @@
   <exec_depend>roslaunch</exec_depend>
   <exec_depend>rosmaster</exec_depend>
   <exec_depend>rospy</exec_depend>
+  <exec_depend>nodelet</exec_depend>
+  <build_depend>nodelet</build_depend>
 
   <export></export>
 </package>
