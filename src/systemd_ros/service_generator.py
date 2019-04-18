@@ -215,7 +215,7 @@ class ServiceGenerator(object):
             args.append('{}{}'.format(nodelet.namespace, nodelet.name))
             for kv in nodelet.remap_args:
                 args.append('{}:={}'.format(*kv))
-        node.args = ' '.join(args)
+        node.args = '\\\n '.join(args)
 
         return self.generate_node_config(node)
 
