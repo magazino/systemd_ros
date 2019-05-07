@@ -2,6 +2,10 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.2.0 (2019-05-07)
+------------------
+* Smart way of handling nodelets and managers
+
 1.1.1 (2019-03-06)
 ------------------
 * skip param loading during generation
