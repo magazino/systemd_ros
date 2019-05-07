@@ -141,8 +141,8 @@ class ServiceGenerator(object):
             '{remappings} {args}'
             ''.format(
                 env_sh=env_sh,
-                prefix=(' --prefix={}'.format(node.launch_prefix)
-                        if node.launch_prefix else ''),
+                prefix=(' --prefix="{}"'.format(node.launch_prefix)
+                        if node.launch_prefix and 'delayed' not in node.launch_prefix else ''),
                 package=node.package,
                 type=node.type,
                 args=node.args,
