@@ -93,7 +93,7 @@ class ServiceGenerator(object):
         else:
             data['Unit'].update({
                 'After': self.main_service_name,
-                'PartOf': 'roscore.service {}'.format(manager_service)
+                'PartOf': 'roscore.service {}'.format(self.main_service_name)
             })
 
         if node.respawn:
