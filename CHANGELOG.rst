@@ -2,6 +2,10 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.0 (2019-05-29)
+------------------
+* Services should be restarted if roscore restarts
+
 1.2.0 (2019-05-07)
 ------------------
 * Smart way of handling nodelets and managers
