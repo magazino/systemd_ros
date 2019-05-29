@@ -2,6 +2,10 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.1 (2019-05-29)
+------------------
+* Fix typo in argument name
+
 1.3.0 (2019-05-29)
 ------------------
 * Services should be restarted if roscore restarts
