@@ -286,6 +286,8 @@ def main():
     parser.add_argument('--extra-config', type=argparse.FileType('r'))
     parser.add_argument('--user', type=str, default='ros')
     parser.add_argument('--group', type=str, default='ros')
+    parser.add_argument('--ros-arg', action='append', dest='ros_args')
+    parser.set_defaults(ros_args=[])
     args = parser.parse_args()
 
     launch_file_name = os.path.abspath(getattr(args, 'launch-file').name)
@@ -294,7 +296,8 @@ def main():
     getattr(args, 'launch-file').close()
 
     config = ROSLaunchConfig()
-    FastXmlLoader().load(launch_file_name, config, verbose=False)
+    FastXmlLoader().load(launch_file_name, config, verbose=False,
+                         argv=args.ros_args)
 
     extra_config = {}
     if args.extra_config:
