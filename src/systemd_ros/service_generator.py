@@ -274,7 +274,7 @@ class ServiceGenerator(object):
             if service_name != self.main_service_name:
                 wants_file = os.path.join(wants_dir, service_name)
                 if not os.path.exists(wants_file):
-                    os.symlink(os.path.join(os.pardir, self.main_service_name),
+                    os.symlink(os.path.join(os.pardir, service_name),
                                wants_file)
 
 
