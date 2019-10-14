@@ -2,6 +2,11 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.3.2 (2019-10-14)
+------------------
+* Fixed wants generation
+* Support ros args
+
 1.3.1 (2019-05-29)
 ------------------
 * Fix typo in argument name
