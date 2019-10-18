@@ -2,6 +2,10 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.4.0 (2019-10-18)
+------------------
+* Define TimeoutStopSec
+
 1.3.2 (2019-10-14)
 ------------------
 * Fixed wants generation
