@@ -88,12 +88,12 @@ class ServiceGenerator(object):
                 manager_name = node.namespace + manager_name
             manager_service = self.node_name_to_service(manager_name)
             data['Unit'].update({
-                'After': manager_service,
+                'After': 'roscore.service {}'.format(manager_service),
                 'PartOf': 'roscore.service {}'.format(manager_service)
             })
         else:
             data['Unit'].update({
-                'After': self.main_service_name,
+                'After': 'roscore.service {}'.format(self.main_service_name),
                 'PartOf': 'roscore.service {}'.format(self.main_service_name)
             })
 
@@ -175,6 +175,7 @@ class ServiceGenerator(object):
             'Unit': {
                 'Description': self.main_service_name,
                 'PartOf': 'roscore.service',
+                'After': 'roscore.service',
             },
             'Service': {
                 'Type': 'notify',
