@@ -2,6 +2,10 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.5.0 (2020-01-14)
+------------------
+* Start main node after roscore
+
 1.4.0 (2019-10-18)
 ------------------
 * Define TimeoutStopSec
