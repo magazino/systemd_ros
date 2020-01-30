@@ -89,12 +89,12 @@ class ServiceGenerator(object):
             manager_service = self.node_name_to_service(manager_name)
             data['Unit'].update({
                 'After': 'roscore.service {}'.format(manager_service),
-                'PartOf': 'roscore.service {}'.format(manager_service)
+                'BindsTo': 'roscore.service {}'.format(manager_service)
             })
         else:
             data['Unit'].update({
                 'After': 'roscore.service {}'.format(self.main_service_name),
-                'PartOf': 'roscore.service {}'.format(self.main_service_name)
+                'BindsTo': 'roscore.service {}'.format(self.main_service_name)
             })
 
         if node.respawn:
@@ -174,8 +174,8 @@ class ServiceGenerator(object):
         return SystemdConfigParser.from_dict({
             'Unit': {
                 'Description': self.main_service_name,
-                'PartOf': 'roscore.service',
                 'After': 'roscore.service',
+                'BindsTo': 'roscore.service',
             },
             'Service': {
                 'Type': 'notify',
