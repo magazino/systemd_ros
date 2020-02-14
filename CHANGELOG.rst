@@ -2,6 +2,13 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.6.0 (2020-02-14)
+------------------
+* Make unit binding even stronger
+  PartOf is limited to stopping and restarting of units. This allows to
+  start a unit without roscore running. BindsTo should automatically start
+  the roscore in that case.
+
 1.5.0 (2020-01-14)
 ------------------
 * Start main node after roscore
