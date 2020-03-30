@@ -75,7 +75,7 @@ class ParamManager(object):
 
 
 def main():
-    rospy.init_node('param_manager')
+    rospy.init_node('param_manager', disable_rostime=True)
     parser = argparse.ArgumentParser()
     parser.add_argument('file', type=argparse.FileType('r'))
 
