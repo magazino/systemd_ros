@@ -2,6 +2,10 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.6.1 (2020-04-06)
+------------------
+* disable rostime to integrate nicely into gazebo
+
 1.6.0 (2020-02-14)
 ------------------
 * Make unit binding even stronger
