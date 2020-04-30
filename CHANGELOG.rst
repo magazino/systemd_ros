@@ -2,6 +2,10 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.6.2 (2020-04-30)
+------------------
+* Add localhost IPs to filter (Closes: SW-33832)
+
 1.6.1 (2020-04-06)
 ------------------
 * disable rostime to integrate nicely into gazebo
