@@ -103,7 +103,7 @@ class ServiceGenerator(object):
                 data['Service']['RestartSec'] = "{0:.0f}s".format(
                     node.respawn_delay)
 
-        if machine.address == 'localhost':
+        if machine.address in ('localhost', '127.0.0.1', '127.0.1.1'):
             env_sh = ENV_SH
             data['Service']['Environment'] = ' '.join(
                 '"{}={}"'.format(*kv)
