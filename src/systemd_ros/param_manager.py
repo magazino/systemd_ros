@@ -68,8 +68,6 @@ class ParamManager(object):
             self.multi_call('setParam', [
                 (param.key, param.value)
                 for param in new_config.params.values()
-                if param.key not in old_config.params or
-                old_config.params[param.key].value != param.value
             ])
             self.config = new_config
 
