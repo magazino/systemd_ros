@@ -2,6 +2,15 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.7.0 (2020-08-26)
+------------------
+* Set all parameters on reload
+  The old behavior was just setting parameters which changed between start
+  and reload without checking what is really on the parameter server.
+  The consequence so far was that for example after a call of
+  "rosparam delete /" reload did not set any parameter.
+  Closes: SW-34127
+
 1.6.2 (2020-04-30)
 ------------------
 * Add localhost IPs to filter (Closes: SW-33832)
