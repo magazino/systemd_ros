@@ -198,7 +198,8 @@ class ServiceGenerator(object):
                                   launch_file=self.launch_file_name)),
                 'ExecReload': '/bin/kill -HUP $MAINPID',
                 'KillSignal': 'SIGINT',
-                'TimeoutStopSec': 10,
+                'TimeoutStartSec': 10800,
+                'TimeoutStopSec': 15,
             },
             'Install': {
                 'WantedBy': 'multi-user.target'
