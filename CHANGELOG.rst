@@ -2,6 +2,11 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.8.0 (2020-09-08)
+------------------
+* reduced infinite to 3h
+* infinte start timeout, to allow warehouse and firmware updates, slightly increase stop timeout
+
 1.7.0 (2020-08-26)
 ------------------
 * Set all parameters on reload
