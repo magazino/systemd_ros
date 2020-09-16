@@ -107,7 +107,7 @@ class ServiceGenerator(object):
             env_sh = ENV_SH
             data['Service']['Environment'] = ' '.join(
                 '"{}={}"'.format(*kv)
-                for kv in node.env_args + self.local_env_args)
+                for kv in node.env_args + list(self.local_env_args))
         else:
             data['Service']['SuccessExitStatus'] = 130
             data['Service']['Environment'] = (
