@@ -75,7 +75,7 @@ class ServiceGenerator(object):
                 'StandardError': 'journal',
                 'SyslogIdentifier': full_name,
                 'KillSignal': 'SIGINT',
-                'TimeoutStopSec': 10,
+                'TimeoutStopSec': '10',
             },
             'Install': {
                 'WantedBy': self.main_service_name,
@@ -198,8 +198,8 @@ class ServiceGenerator(object):
                                   launch_file=self.launch_file_name)),
                 'ExecReload': '/bin/kill -HUP $MAINPID',
                 'KillSignal': 'SIGINT',
-                'TimeoutStartSec': 10800,
-                'TimeoutStopSec': 15,
+                'TimeoutStartSec': '10800',
+                'TimeoutStopSec': '15',
             },
             'Install': {
                 'WantedBy': 'multi-user.target'
