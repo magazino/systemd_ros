@@ -75,7 +75,7 @@ class ServiceGenerator(object):
                 'StandardError': 'journal',
                 'SyslogIdentifier': full_name,
                 'KillSignal': 'SIGINT',
-                'TimeoutStopSec': 10,
+                'TimeoutStopSec': '10',
             },
             'Install': {
                 'WantedBy': self.main_service_name,
@@ -107,7 +107,7 @@ class ServiceGenerator(object):
             env_sh = ENV_SH
             data['Service']['Environment'] = ' '.join(
                 '"{}={}"'.format(*kv)
-                for kv in node.env_args + self.local_env_args)
+                for kv in node.env_args + list(self.local_env_args))
         else:
             data['Service']['SuccessExitStatus'] = 130
             data['Service']['Environment'] = (
@@ -198,8 +198,8 @@ class ServiceGenerator(object):
                                   launch_file=self.launch_file_name)),
                 'ExecReload': '/bin/kill -HUP $MAINPID',
                 'KillSignal': 'SIGINT',
-                'TimeoutStartSec': 10800,
-                'TimeoutStopSec': 15,
+                'TimeoutStartSec': '10800',
+                'TimeoutStopSec': '15',
             },
             'Install': {
                 'WantedBy': 'multi-user.target'
