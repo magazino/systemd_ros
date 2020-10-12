@@ -305,7 +305,7 @@ def main():
 
     extra_config = {}
     if args.extra_config:
-        extra_config = yaml.load(args.extra_config)
+        extra_config = yaml.safe_load(args.extra_config)
         args.extra_config.close()
 
     main_service_name = getattr(args, 'main-service')
