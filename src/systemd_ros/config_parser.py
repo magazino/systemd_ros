@@ -33,5 +33,5 @@ class SystemdConfigParser(ConfigParser):
             if not config.has_section(section):
                 config.add_section(section)
             for key, value in items.items():
-                config.set(section, key, value)
+                config.set(section, key, str(value))
         return config
