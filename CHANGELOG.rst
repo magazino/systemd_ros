@@ -2,6 +2,10 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.9.0 (2020-10-16)
+------------------
+* Python 3 compatibility
+
 1.8.0 (2020-09-08)
 ------------------
 * reduced infinite to 3h
