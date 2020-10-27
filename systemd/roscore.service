@@ -4,7 +4,7 @@ After=network.target roscore.socket
 Requires=roscore.socket
 
 [Service]
-ExecStart=/opt/ros/kinetic/env.sh systemd-roscore --core -p 11311 -w 3 __log:=/dev/null
+ExecStart=/opt/ros/noetic/env.sh systemd-roscore --core -p 11311 -w 3 __log:=/dev/null
 ProtectSystem=full
 
 [Install]
