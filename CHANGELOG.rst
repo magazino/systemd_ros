@@ -2,6 +2,11 @@
 Changelog for package systemd_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.10.0 (2020-11-04)
+-------------------
+* Updated documentation
+* Python 2/3 compatibility
+
 1.9.0 (2020-10-16)
 ------------------
 * Python 3 compatibility
