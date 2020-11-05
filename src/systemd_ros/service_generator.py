@@ -41,11 +41,11 @@ class ServiceGenerator(object):
         self.group = group
         pkg_path = rospkg.RosPack().get_path('systemd_ros')
         self.local_env_args = {
+            'ROSCONSOLE_STDOUT_LINE_BUFFERED': '1',
             'ROS_PYTHON_LOG_CONFIG_FILE':
                 os.path.join(pkg_path, 'systemd_logging_without_rosout.conf'),
-            'ROSCONSOLE_CONFIG_FILE':
-                os.path.join(pkg_path, 'systemd_log4cxx_no_output.conf'),
             'HOSTNAME': platform.node(),
+            'ROSCONSOLE_FORMAT': '\\"${message}\\"',
         }.items()
 
     @property
@@ -111,7 +111,7 @@ class ServiceGenerator(object):
         else:
             data['Service']['SuccessExitStatus'] = 130
             data['Service']['Environment'] = (
-                '"ROS_MASTER_URI={}"'.format(self.master_uri)
+                '"ROS_MASTER_URI={}" "ROSCONSOLE_STDOUT_LINE_BUFFERED=1"'.format(self.master_uri)
             )
             data['Service']['ExecStop'] = (
                 '{env_sh} rosnode kill {full_name}'
